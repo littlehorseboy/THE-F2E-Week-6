@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Create Account</h2>
-    <h4>Glad to see you here!</h4>
+    <h1>Create Account</h1>
+    <h3>Glad to see you here!</h3>
 
     <div class="form-main">
       <div>
@@ -18,7 +18,7 @@
           <input>
         </div>
         <div class="group">
-          <router-link :to="{ name: 'GeneralInfomation' }" tag="button">SUBMIT & NEXT</router-link>
+          <router-link :to="{ name: 'GeneralInfomation' }" @click.native="nextStep" tag="button">SUBMIT & NEXT</router-link>
         </div>
       </div>
     </div>
@@ -28,44 +28,73 @@
 <script>
 export default {
   name: 'CreateAccount',
-  data() {
-    return {
-
-    };
+  methods: {
+    nextStep() {
+      this.$store.dispatch('updateStep', 2);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.form-main {
-  display: flex;
-  justify-content: center;
-  >div {
-    min-width: 400px;
-    max-width: 800px;
-    .group {
+  h1 {
+    font-weight: 400;
+  }
 
-      >label {
-        display: block;
-        width: 100%;
-      }
-      >input {
-        display: block;
-        width: 100%;
-      }
-      >button {
-        display: block;
-        width: 100%;
-        background-color: #0275D8;
-        border: 2px solid #4A90E2;
-        border-radius: 8px;
-        box-sizing: border-box;
-        font-size: 20px;
-        color: #FFFFFF;
-        text-align: center;
-        line-height: 52px;
+  h3 {
+    font-weight: 400;
+  }
+
+  .form-main {
+    display: flex;
+    justify-content: center;
+    >div {
+      min-width: 400px;
+      max-width: 800px;
+      .group {
+        margin-top: 1rem;
+        >label {
+          display: block;
+          width: 100%;
+          margin-bottom: 0.4rem;
+          text-align: left;
+          font-size: 20px;
+          line-height: 24px;
+          letter-spacing: 0;
+        }
+        >input {
+          display: block;
+          width: 100%;
+          border: 2px solid #000000;
+          border-radius: 8px;
+          height: 45px;
+          font-size: 20px;
+          line-height: 24px;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          box-sizing: border-box;
+          &:focus {
+            border-color: #4A90E2;
+          }
+        }
+        >button {
+          display: block;
+          width: 100%;
+          margin-top: 2rem;
+          background-color: #0275D8;
+          border: 2px solid #4A90E2;
+          border-radius: 8px;
+          box-sizing: border-box;
+          font-size: 20px;
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 40px;
+          cursor: pointer;
+          &:hover {
+            background-color: rgb(0, 126, 236);
+          }
+        }
       }
     }
   }
-}
 </style>
