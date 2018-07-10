@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'CreateAccount',
+  name: 'UpdateProfilePicture',
   data() {
     return {
 

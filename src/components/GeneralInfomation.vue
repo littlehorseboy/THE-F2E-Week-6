@@ -3,7 +3,7 @@
     <h2>General Infomation</h2>
     <h4>Tell us who you are!</h4>
 
-    <div>
+    <div class="form">
       <div>
         <label>Account</label>
       </div>
@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'CreateAccount',
+  name: 'GeneralInfomation',
   data() {
     return {
 

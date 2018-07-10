@@ -23,7 +23,7 @@
         <input>
       </div>
       <div>
-        <router-link :to="{ name: 'GeneralInfomation' }" tag="button">SUBMIT & NEXT</router-link>
+        <router-link :to="{ name: 'CreateAccount' }" tag="button">SUBMIT & NEXT</router-link>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'CreateAccount',
+  name: 'PaymentMethod',
   data() {
     return {
 
