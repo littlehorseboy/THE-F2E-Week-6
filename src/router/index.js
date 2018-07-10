@@ -34,7 +34,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/create-account',
+      redirect: '/account/create-account',
     },
   ],
 });
