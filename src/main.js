@@ -4,7 +4,7 @@ import Vue from 'vue';
 import 'normalize-scss/sass/normalize/_import-now.scss';
 import 'roboto-fontface/css/roboto/sass/roboto-fontface.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faDotCircle } from '@fortawesome/free-solid-svg-icons';
+import { faDotCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App';
 import router from './router';
