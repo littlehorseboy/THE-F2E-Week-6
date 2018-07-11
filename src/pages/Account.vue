@@ -3,10 +3,6 @@
     <header></header>
     <div class="AccountContainer">
       <div class="dotdotdotdot">
-        <!-- <font-awesome-icon :icon="['far', 'dot-circle']" />
-        <font-awesome-icon :icon="['far', 'dot-circle']" />
-        <font-awesome-icon :icon="['far', 'dot-circle']" />
-        <font-awesome-icon :icon="['far', 'dot-circle']" /> -->
         <ul class="progressbarStep">
           <li :class="{ active: step > 0 }">step 1</li>
           <li :class="{ active: step > 1 }">step 2</li>
@@ -58,8 +54,10 @@ export default {
       display: flex;
       justify-content: center;
       .progressbarStep {
-        min-width: 400px;
-        max-width: 800px;
+        width: 420px;
+        @media (max-width: 768px) {
+          width: 100%;
+        }
         padding-left: 0;
         counter-reset: step;
         >li {
@@ -95,12 +93,12 @@ export default {
             content: none;
           }
           &.active {
-            color: green;
+            color: #0275D8;
             &:before {
-              border-color: green;
+              border-color: #0275D8;
             }
             &+ li:after {
-              background-color: green;
+              background-color: #0275D8;
             }
           }
         }

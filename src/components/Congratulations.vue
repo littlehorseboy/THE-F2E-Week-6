@@ -1,25 +1,17 @@
 <template>
   <div>
-    <h1>Update Profile Picture</h1>
-    <h3>We wanna know you more!</h3>
+    <h1>Congratulations</h1>
+    <h3>Now you’re one of us!</h3>
 
     <div class="form-main">
       <div>
         <div class="group">
           <div>
-            <div>
-              <font-awesome-icon :icon="['fas', 'images']" />
-            </div>
-            <div>
-              <div>UPLOAD UP TO 3 PHOTOS</div>
-              <div>MAX SIZE: 150*150px</div>
-            </div>
+            <font-awesome-icon :icon="['fas', 'smile']" />
           </div>
         </div>
         <div class="group">
-          <button @click="nextStep">
-            SUBMIT & NEXT
-          </button>
+          Redirected to homepage after 5 seconds…
         </div>
       </div>
     </div>
@@ -31,8 +23,8 @@ export default {
   name: 'UpdateProfilePicture',
   methods: {
     nextStep() {
-      this.$store.dispatch('updateStep', 4);
-      this.$router.push({ name: 'PaymentMethod' });
+      this.$store.dispatch('updateStep', 1);
+      this.$router.push({ name: 'CreateAccount' });
     },
   },
 };
@@ -60,32 +52,17 @@ export default {
       }
       .group {
         margin-top: 1rem;
+        color: #0275D8;
+        font-style: italic;
+        font-weight: 400;
         >div {
           display: flex;
           justify-content: center;
           align-items: center;
           width: 100%;
-          color: #9B9B9B;
-          border: 2px solid #000000;
-          border-radius: 8px;
-          height: 140px;
-          font-size: 20px;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          box-sizing: border-box;
-          cursor: pointer;
-          &:hover {
-            border-color: #4A90E2;
-          }
-          >div {
-            text-align: left;
-            >svg {
-              font-size: 50px;
-              margin-right: 1rem;
-            }
-            >div:nth-child(2) {
-              font-size: 16px;
-            }
+          >svg {
+            color: #BEE1FF;
+            font-size: 12rem;
           }
         }
         >button {

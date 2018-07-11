@@ -6,21 +6,48 @@
     <div class="form-main">
       <div>
         <div class="group">
-          <label>Account</label>
-          <input>
+          <div>
+            <label>Name (optional)</label>
+            <input placeholder="Example Name">
+          </div>
+          <div>
+            <label>Phone*</label>
+            <input placeholder="0912 345 678">
+          </div>
         </div>
         <div class="group">
-          <label>Password</label>
-          <input>
+          <div>
+            <label>Birth Date (optional)</label>
+            <input placeholder="YYYY">
+          </div>
+          <div>
+            <label></label>
+            <input placeholder="MM">
+          </div>
+          <div>
+            <label></label>
+            <input placeholder="DD">
+          </div>
         </div>
         <div class="group">
-          <label>Comfirm Password</label>
-          <input>
+          <div>
+            <label>Address*</label>
+            <input placeholder="City">
+          </div>
+          <div>
+            <label></label>
+            <input placeholder="Dist">
+          </div>
         </div>
         <div class="group">
-          <router-link :to="{ name: 'UpdateProfilePicture' }" @click.native="nextStep" tag="button">
+          <div>
+            <input placeholder="Address Detail">
+          </div>
+        </div>
+        <div class="group">
+          <button @click="nextStep">
             SUBMIT & NEXT
-          </router-link>
+          </button>
         </div>
       </div>
     </div>
@@ -33,6 +60,7 @@ export default {
   methods: {
     nextStep() {
       this.$store.dispatch('updateStep', 3);
+      this.$router.push({ name: 'UpdateProfilePicture' });
     },
   },
 };
@@ -40,49 +68,68 @@ export default {
 
 <style lang="scss" scoped>
   h1 {
-    font-weight: 400;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 0.2em;
   }
 
   h3 {
     font-weight: 400;
+    margin-top: 0.2em;
   }
 
   .form-main {
     display: flex;
     justify-content: center;
     >div {
-      min-width: 400px;
-      max-width: 800px;
+      width: 420px;
+      @media (max-width: 768px) {
+        width: 90%;
+      }
       .group {
+        display: flex;
+        align-items: flex-end;
         margin-top: 1rem;
-        >label {
-          display: block;
-          width: 100%;
-          margin-bottom: 0.4rem;
-          text-align: left;
-          font-size: 20px;
-          line-height: 24px;
-          letter-spacing: 0;
-        }
-        >input {
-          display: block;
-          width: 100%;
-          border: 2px solid #000000;
-          border-radius: 8px;
-          height: 45px;
-          font-size: 20px;
-          line-height: 24px;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          box-sizing: border-box;
-          &:focus {
-            border-color: #4A90E2;
+        >div {
+          flex: 1;
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+          >label {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.4rem;
+            text-align: left;
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0;
+            white-space: nowrap;
+          }
+          >input {
+            display: block;
+            width: 100%;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            height: 45px;
+            font-size: 20px;
+            line-height: 24px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box;
+            &:focus {
+              border-color: #4A90E2;
+            }
           }
         }
         >button {
           display: block;
           width: 100%;
-          margin-top: 2rem;
+          margin-top: 1rem;
           background-color: #0275D8;
           border: 2px solid #4A90E2;
           border-radius: 8px;

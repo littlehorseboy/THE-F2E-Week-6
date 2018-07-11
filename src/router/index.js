@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from '../store';
 
 Vue.use(Router);
 
@@ -29,6 +30,15 @@ export default new Router({
           path: 'payment-method',
           name: 'PaymentMethod',
           component: () => import('@/components/PaymentMethod'),
+        },
+        {
+          path: 'congratulations',
+          name: 'Congratulations',
+          component: () => import('@/components/Congratulations'),
+          beforeEnter(to, from, next) {
+            store.dispatch('updateStep', 1);
+            next('create-account');
+          },
         },
       ],
     },

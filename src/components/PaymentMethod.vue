@@ -6,21 +6,39 @@
     <div class="form-main">
       <div>
         <div class="group">
-          <label>Account</label>
-          <input>
+          <div>
+            <label>Card Number</label>
+            <input placeholder="1234 5678 9012 3456">
+          </div>
         </div>
         <div class="group">
-          <label>Password</label>
-          <input>
+          <div>
+            <label>Cardholder Name</label>
+            <input placeholder="EXAMPLE NAME">
+          </div>
+          <div>
+            <label>Bank Name</label>
+            <input placeholder="EXAMPLE BANK">
+          </div>
         </div>
         <div class="group">
-          <label>Comfirm Password</label>
-          <input>
+          <div>
+            <label>CVV</label>
+            <input placeholder="123">
+          </div>
+          <div>
+            <label>Expire Date</label>
+            <input placeholder="MM">
+          </div>
+          <div>
+            <label>Account</label>
+            <input placeholder="DD">
+          </div>
         </div>
         <div class="group">
-          <router-link :to="{ name: 'CreateAccount' }" @click.native="nextStep" tag="button">
-            SUBMIT & NEXT
-          </router-link>
+          <button @click="nextStep">
+            DONE
+          </button>
         </div>
       </div>
     </div>
@@ -32,7 +50,8 @@ export default {
   name: 'PaymentMethod',
   methods: {
     nextStep() {
-      this.$store.dispatch('updateStep', 1);
+      this.$store.dispatch('updateStep', 5);
+      this.$router.push({ name: 'Congratulations' });
     },
   },
 };
@@ -40,43 +59,61 @@ export default {
 
 <style lang="scss" scoped>
   h1 {
-    font-weight: 400;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 0.2em;
   }
 
   h3 {
     font-weight: 400;
+    margin-top: 0.2em;
   }
 
   .form-main {
     display: flex;
     justify-content: center;
     >div {
-      min-width: 400px;
-      max-width: 800px;
+      width: 420px;
+      @media (max-width: 768px) {
+        width: 90%;
+      }
       .group {
+        display: flex;
+        align-items: flex-end;
         margin-top: 1rem;
-        >label {
-          display: block;
-          width: 100%;
-          margin-bottom: 0.4rem;
-          text-align: left;
-          font-size: 20px;
-          line-height: 24px;
-          letter-spacing: 0;
-        }
-        >input {
-          display: block;
-          width: 100%;
-          border: 2px solid #000000;
-          border-radius: 8px;
-          height: 45px;
-          font-size: 20px;
-          line-height: 24px;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          box-sizing: border-box;
-          &:focus {
-            border-color: #4A90E2;
+        >div {
+          flex: 1;
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+          >label {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.4rem;
+            text-align: left;
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0;
+          }
+          >input {
+            display: block;
+            width: 100%;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            height: 45px;
+            font-size: 20px;
+            line-height: 24px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box;
+            &:focus {
+              border-color: #4A90E2;
+            }
           }
         }
         >button {

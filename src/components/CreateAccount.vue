@@ -25,9 +25,9 @@
           <span class="msg-error">{{ errors.first('confirmPassword') }}</span>
         </div>
         <div class="group">
-          <router-link :to="{ name: 'GeneralInfomation' }" @click.native="nextStep" tag="button">
+          <button @click="nextStep">
             SUBMIT & NEXT
-          </router-link>
+          </button>
         </div>
       </div>
     </div>
@@ -46,11 +46,12 @@ export default {
   },
   methods: {
     nextStep() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          this.$store.dispatch('updateStep', 2);
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      //   if (result) {
+      this.$store.dispatch('updateStep', 2);
+      this.$router.push({ name: 'GeneralInfomation' });
+      //   }
+      // });
     },
   },
 };
@@ -58,19 +59,24 @@ export default {
 
 <style lang="scss" scoped>
   h1 {
-    font-weight: 400;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 0.2em;
   }
 
   h3 {
     font-weight: 400;
+    margin-top: 0.2em;
   }
 
   .form-main {
     display: flex;
     justify-content: center;
     >div {
-      min-width: 400px;
-      max-width: 800px;
+      width: 420px;
+      @media (max-width: 768px) {
+        width: 90%;
+      }
       .group {
         margin-top: 1rem;
         >label {
