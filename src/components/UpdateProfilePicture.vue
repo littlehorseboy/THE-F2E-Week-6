@@ -18,7 +18,9 @@
           <input>
         </div>
         <div class="group">
-          <router-link :to="{ name: 'PaymentMethod' }" @click.native="nextStep" tag="button">SUBMIT & NEXT</router-link>
+          <router-link :to="{ name: 'PaymentMethod' }" @click.native="nextStep" tag="button">
+            SUBMIT & NEXT
+          </router-link>
         </div>
       </div>
     </div>

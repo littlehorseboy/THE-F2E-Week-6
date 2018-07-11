@@ -8,10 +8,10 @@
         <font-awesome-icon :icon="['far', 'dot-circle']" />
         <font-awesome-icon :icon="['far', 'dot-circle']" /> -->
         <ul class="progressbarStep">
-          <li :class="{ active: step > 0 }">gg</li>
-          <li :class="{ active: step > 1 }">gg</li>
-          <li :class="{ active: step > 2 }">gg</li>
-          <li :class="{ active: step > 3 }">gg</li>
+          <li :class="{ active: step > 0 }">step 1</li>
+          <li :class="{ active: step > 1 }">step 2</li>
+          <li :class="{ active: step > 2 }">step 3</li>
+          <li :class="{ active: step > 3 }">step 4</li>
         </ul>
       </div>
       <div style="clear: both;"></div>

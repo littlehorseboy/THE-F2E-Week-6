@@ -7,18 +7,27 @@
       <div>
         <div class="group">
           <label>Account</label>
-          <input>
+          <input v-model="account" v-validate="{ required: true, email: true }"
+            name="account" placeholder="example@email.com">
+          <span class="msg-error">{{ errors.first('account') }}</span>
         </div>
         <div class="group">
           <label>Password</label>
-          <input>
+          <input v-model="password"
+            v-validate="{ required: true, confirmed: 'passwordRef',  }"
+            name="password" type="password" placeholder="********">
+          <span class="msg-error">{{ errors.first('password') }}</span>
         </div>
         <div class="group">
-          <label>Comfirm Password</label>
-          <input>
+          <label>Confirm Password</label>
+          <input v-model="confirmPassword" v-validate="{ required: true }"
+            name="confirmPassword" ref="passwordRef" type="password" placeholder="********">
+          <span class="msg-error">{{ errors.first('confirmPassword') }}</span>
         </div>
         <div class="group">
-          <router-link :to="{ name: 'GeneralInfomation' }" @click.native="nextStep" tag="button">SUBMIT & NEXT</router-link>
+          <router-link :to="{ name: 'GeneralInfomation' }" @click.native="nextStep" tag="button">
+            SUBMIT & NEXT
+          </router-link>
         </div>
       </div>
     </div>
@@ -28,9 +37,20 @@
 <script>
 export default {
   name: 'CreateAccount',
+  data() {
+    return {
+      account: '',
+      password: '',
+      confirmPassword: '',
+    };
+  },
   methods: {
     nextStep() {
-      this.$store.dispatch('updateStep', 2);
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.$store.dispatch('updateStep', 2);
+        }
+      });
     },
   },
 };

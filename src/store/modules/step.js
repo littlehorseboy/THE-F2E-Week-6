@@ -22,7 +22,7 @@ const actions = {
         } else {
           reject();
         }
-      }, 1500);
+      }, 0);
     });
   },
 };
