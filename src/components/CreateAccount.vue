@@ -46,12 +46,12 @@ export default {
   },
   methods: {
     nextStep() {
-      // this.$validator.validateAll().then((result) => {
-      //   if (result) {
-      this.$store.dispatch('updateStep', 2);
-      this.$router.push({ name: 'GeneralInfomation' });
-      //   }
-      // });
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.$store.dispatch('updateStep', 2);
+          this.$router.push({ name: 'GeneralInfomation' });
+        }
+      });
     },
   },
 };

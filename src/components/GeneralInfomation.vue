@@ -8,40 +8,52 @@
         <div class="group">
           <div>
             <label>Name (optional)</label>
-            <input placeholder="Example Name">
+            <input v-model="name" placeholder="Example Name">
           </div>
           <div>
             <label>Phone*</label>
-            <input placeholder="0912 345 678">
+            <input v-model="phone" v-validate="{ required: true }"
+              name="phone" placeholder="0912 345 678">
+            <span class="msg-error">{{ errors.first('phone') }}</span>
           </div>
         </div>
         <div class="group">
           <div>
             <label>Birth Date (optional)</label>
-            <input placeholder="YYYY">
+            <select v-model="birthYYYY">
+              <option disabled value="">YYYY</option>
+              <option v-for="(yyyy, index) in birthYYYYs" :key="index" :value="yyyy">
+                {{ yyyy }}
+              </option>
+            </select>
           </div>
           <div>
             <label></label>
-            <input placeholder="MM">
+            <select v-model="birthMM">
+              <option disabled value="">MM</option>
+              <option v-for="(mm, index) in birthMMs" :key="index" :value="mm">
+                {{ mm }}
+              </option>
+            </select>
           </div>
           <div>
             <label></label>
-            <input placeholder="DD">
+            <input v-model="birthDD" placeholder="DD">
           </div>
         </div>
         <div class="group">
           <div>
-            <label>Address*</label>
-            <input placeholder="City">
+            <label>Address</label>
+            <input v-model="addressCity" placeholder="City">
           </div>
           <div>
             <label></label>
-            <input placeholder="Dist">
+            <input v-model="addressDist" placeholder="Dist">
           </div>
         </div>
         <div class="group">
           <div>
-            <input placeholder="Address Detail">
+            <input v-model="addressDetail" placeholder="Address Detail">
           </div>
         </div>
         <div class="group">
@@ -55,12 +67,34 @@
 </template>
 
 <script>
+import _ from 'lodash';
+
+const newDate = new Date();
+
 export default {
   name: 'GeneralInfomation',
+  data() {
+    return {
+      name: '',
+      phone: '',
+      birthYYYY: '',
+      birthYYYYs: _.range(newDate.getFullYear() - 100, newDate.getFullYear() + 1),
+      birthMM: '',
+      birthMMs: _.range(1, 12 + 1),
+      birthDD: '',
+      addressCity: '',
+      addressDist: '',
+      addressDetail: '',
+    };
+  },
   methods: {
     nextStep() {
-      this.$store.dispatch('updateStep', 3);
-      this.$router.push({ name: 'UpdateProfilePicture' });
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.$store.dispatch('updateStep', 3);
+          this.$router.push({ name: 'UpdateProfilePicture' });
+        }
+      });
     },
   },
 };
@@ -110,7 +144,7 @@ export default {
             letter-spacing: 0;
             white-space: nowrap;
           }
-          >input {
+          >input, >select {
             display: block;
             width: 100%;
             border: 2px solid #000000;
