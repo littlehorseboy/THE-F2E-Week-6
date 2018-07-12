@@ -27,6 +27,12 @@ export default {
       this.$router.push({ name: 'CreateAccount' });
     },
   },
+  created() {
+    setTimeout(() => {
+      this.$store.dispatch('updateStep', 1);
+      this.$router.push({ name: 'CreateAccount' });
+    }, 5000);
+  },
 };
 </script>
 
