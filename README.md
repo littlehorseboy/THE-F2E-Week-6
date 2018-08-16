@@ -1,30 +1,17 @@
-# the-f2e-week-6
+# No6.validation
 
-> A Vue.js project
+[The F2E - 前端修練精神時光屋](https://zh-tw.facebook.com/groups/173311386703334/)
 
-## Build Setup
+[第六週 - validation](https://zh-tw.facebook.com/groups/173311386703334/permalink/200454250655714/)
 
-``` bash
-# install dependencies
-npm install
+[設計稿](http://bit.ly/2udrg3l)
 
-# serve with hot reload at localhost:8080
-npm run dev
+[Tommy](https://www.youtube.com/watch?v=hQ6UfBVylio)
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+* sass
+* vue-cli
+* vue-router
+* vuex
+* normalize-scss
+* @fortawesome/vue-fontawesome
+* roboto-fontface
